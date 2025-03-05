@@ -1,12 +1,20 @@
-if [ -z $UPSTREAM_REPO ]
-then
-  echo "Cloning main Repository"
-  git clone https://github.com/FreakersBots/Auto-Filter-With-Url-Shortener-Bot /Eva
-else
-  echo "Cloning Custom Repo from $UPSTREAM_REPO "
-  git clone $UPSTREAM_REPO /Eva
+#!/bin/bash
+
+# Define the default repository URL
+DEFAULT_REPO=https://github.com/Gowtham380/GT-MOVIESS
+
+# Check if UPSTREAM_REPO is set; if not, use the default
+REPO=${UPSTREAM_REPO:-$DEFAULT_REPO}
+
+echo "Cloning Repository from $REPO"
+git clone $REPO /bot
+
+cd /bot
+
+# Install dependencies if requirements.txt exists
+if [ -f "requirements.txt" ]; then
+    pip3 install -U -r requirements.txt
 fi
-cd /Eva
-pip3 install -U -r requirements.txt
-echo "Starting Bot...."
+
+echo "Starting Bot..."
 python3 bot.py
