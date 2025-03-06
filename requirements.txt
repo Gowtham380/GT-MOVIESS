@@ -1,5 +1,4 @@
 git+https://github.com/Joelkb/cinemagoer
---no-cache-dir
 pyrogram==2.0.30
 tgcrypto==1.2.3
 pymongo[srv]==3.12.3
