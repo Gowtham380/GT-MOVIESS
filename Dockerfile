@@ -1,6 +1,6 @@
 FROM python:3.10-slim-buster
 
-# Update & install git
+# Update & install necessary packages
 RUN apt update && apt upgrade -y && apt install git -y
 
 # Set the working directory
