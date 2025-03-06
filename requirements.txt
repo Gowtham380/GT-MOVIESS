@@ -7,7 +7,7 @@ marshmallow==3.14.1
 umongo==3.0.1
 requests==2.26.0
 beautifulsoup4==4.9.3
-heroku3==5.2.1
+heroku3==5.1.4
 pynewtonmath==1.0
 pytz==2021.1
 aiohttp==3.7.4
