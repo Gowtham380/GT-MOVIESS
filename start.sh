@@ -6,17 +6,18 @@ DEFAULT_REPO="https://github.com/Gowtham380/GT-MOVIESS"
 # Check if UPSTREAM_REPO is set; if not, use the default
 REPO=${UPSTREAM_REPO:-$DEFAULT_REPO}
 
-# Remove the existing directory if it exists
-if [ -d "/bot" ]; then
-    echo "Removing existing /bot directory..."
-    rm -rf /bot
-fi
+# Ensure the base directory exists before cloning
+mkdir -p /bot
+
+# Remove any existing /bot directory
+rm -rf /bot/*
 
 # Clone the repository
 echo "Cloning Repository from $REPO"
-git clone $REPO /bot
+git clone $REPO /bot || { echo "Git clone failed!"; exit 1; }
 
-cd /bot || exit
+# Change directory to /bot
+cd /bot || { echo "Failed to enter /bot directory"; exit 1; }
 
 # Install dependencies if requirements.txt exists
 if [ -f "requirements.txt" ]; then
